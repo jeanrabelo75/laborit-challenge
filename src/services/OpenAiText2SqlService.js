@@ -1,5 +1,6 @@
 import OpenAI from "openai";
 import dotenv from "dotenv";
+import { extractSqlFromResponse } from "../utils/extractSql.js";
 
 dotenv.config();
 
@@ -9,7 +10,7 @@ const openai = new OpenAI({
 
 export async function textToSql(query) {
   const response = await getOpenAICompletion(query);
-  return response.choices[0]?.text.trim();
+  return extractSqlFromResponse(response.choices[0]?.text.trim());
 }
 
 export async function getOpenAICompletion(query) {

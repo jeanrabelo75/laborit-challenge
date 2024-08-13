@@ -48,7 +48,7 @@ docker build -t laborit-app .
 Execute o container da aplicação:
 
 ```bash
-docker-compose up 
+docker-compose up --build
 ```
 
 ### 4. Testar a Aplicação
@@ -57,10 +57,12 @@ Você pode testar a API usando ferramentas como Postman ou Insomnia. Por exemplo
 
 - **Endpoint:** `POST http://localhost:3000/api/query`
 - **Corpo da requisição (JSON):**
+- **LLMs disponíveis:** `openapi, groq`
 
 ```json
 {
-  "query": "Quais são os clientes que moram no Brasil?"
+  "query": "Quais são os produtos mais populares entre os clientes corporativos?",
+  "llm": "groq"
 }
 ```
 
