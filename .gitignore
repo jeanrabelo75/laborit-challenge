@@ -6,3 +6,6 @@ node_modules/
 
 # Ignorar arquivos de dependências
 package-lock.json
+
+# Ignorar arquivos da IDE
+.idea/
