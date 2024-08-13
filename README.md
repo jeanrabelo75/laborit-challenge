@@ -16,7 +16,7 @@ Este projeto é uma aplicação Node.js que converte consultas em linguagem natu
 
 ## Configuração do Projeto
 
-### 1. Clonar o Repositório
+### 1. Repositório
 
 Clone o repositório para a sua máquina local:
 
@@ -25,33 +25,23 @@ git clone https://github.com/jeanrabelo75/laborit-challenge.git
 cd laborit-challenge
 ```
 
-### 2. Configurar as Variáveis de Ambiente
+### 2. Variáveis de Ambiente
 
 Copie o arquivo .env.example para um novo arquivo chamado .env na raiz do projeto.
 
 Abra o arquivo .env e preencha as informações necessárias.
 
-### 3. Dockerizar a Aplicação
+### 3. Docker
 
-A aplicação está Dockerizada para garantir consistência em diferentes ambientes. Para rodá-la com Docker, siga os passos abaixo:
+A aplicação está utilizando Docker para garantir consistência em diferentes ambientes. Para rodá-la, siga o passo abaixo:
 
-#### 3.1. Build da Imagem Docker
-
-Construa a imagem Docker a partir do `Dockerfile`:
-
-```bash
-docker build -t laborit-app .
-```
-
-#### 3.2. Rodar o Container
-
-Execute o container da aplicação:
+#### 3.1. Rodar o Container já com a build da Imagem
 
 ```bash
 docker-compose up --build
 ```
 
-### 4. Testar a Aplicação
+### 4. Aplicação
 
 Você pode testar a API usando ferramentas como Postman ou Insomnia. Por exemplo, para enviar uma consulta:
 
