@@ -1,26 +1,29 @@
-const sequelize = require('../config/db');
-const { textToSql } = require('../services/text2sqlService');
+import { textToSql as openAiTextToSql } from '../services/OpenAiText2SqlService.js';
+import { textToSql as groqTextToSql } from '../services/GroqText2SqlService.js';
+import sequelize from '../config/db.js';
 
-async function executeQuery(req, res) {
-  const { query } = req.body;
+export async function executeQuery(req, res) {
+  const { query, llm } = req.body;
+
+  const llmServices = {
+    openai: openAiTextToSql,
+    groq: groqTextToSql,
+  };
 
   try {
-    const sql = await textToSql(query);
-    const [results] = await sequelize.query(sql);
+    const textToSql = llmServices[llm];
 
-    res.json({
-      success: true,
-      sql,
-      results,
-    });
+    if (!textToSql) {
+      return res.status(400).json({ error: "Invalid LLM specified. Use 'openai' or 'groq'." });
+    }
+
+    const sql = await textToSql(query);
+
+    const [results] = await sequelize.query(sql);
+    res.json({ success: true, sql, results });
+
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 }
 
-module.exports = {
-  executeQuery,
-};
