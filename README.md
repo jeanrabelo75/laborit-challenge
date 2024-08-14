@@ -47,11 +47,11 @@ Você pode testar a API usando ferramentas como Postman ou Insomnia. Por exemplo
 
 - **Endpoint:** `POST http://localhost:3000/api/query`
 - **Corpo da requisição (JSON):**
-- **LLMs disponíveis:** `openapi, groq`
+- **LLMs disponíveis:** `groq, openapi, google, amazon`
 
 ```json
 {
-  "query": "Quais são os produtos mais populares entre os clientes corporativos?",
+  "query": "Qual é o volume de vendas por cidade?",
   "llm": "groq"
 }
 ```
